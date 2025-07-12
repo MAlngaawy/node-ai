@@ -7,7 +7,7 @@ const swaggerOptions = {
     info: {
       title: 'User API',
       version: '1.0.0',
-      description: 'A simple Express API with MongoDB for user management',
+      description: 'A simple Express API with MongoDB for user management and JWT authentication',
     },
     servers: [
       {
@@ -16,7 +16,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./src/routes/*.ts', './src/controllers/*.ts'], // Path to the API docs
+  apis: ['./dist/routes/*.js'], // Path to the compiled API docs
 };
 
 export const swaggerSpec = swaggerJsdoc(swaggerOptions);

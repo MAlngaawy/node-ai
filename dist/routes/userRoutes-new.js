@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { getAllUsers, getUserById, deleteUser } from '../controllers/userController';
-import { authenticateToken } from '../middleware/auth';
-
-const router = Router();
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const userController_1 = require("../controllers/userController");
+const auth_1 = require("../middleware/auth");
+const router = (0, express_1.Router)();
 /**
  * @swagger
  * /api/users:
@@ -34,8 +34,7 @@ const router = Router();
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/users', authenticateToken, getAllUsers);
-
+router.get('/users', auth_1.authenticateToken, userController_1.getAllUsers);
 /**
  * @swagger
  * /api/users/{id}:
@@ -83,8 +82,7 @@ router.get('/users', authenticateToken, getAllUsers);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/users/:id', authenticateToken, getUserById);
-
+router.get('/users/:id', auth_1.authenticateToken, userController_1.getUserById);
 /**
  * @swagger
  * /api/users/{id}:
@@ -135,6 +133,5 @@ router.get('/users/:id', authenticateToken, getUserById);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.delete('/users/:id', authenticateToken, deleteUser);
-
-export default router;
+router.delete('/users/:id', auth_1.authenticateToken, userController_1.deleteUser);
+exports.default = router;
