@@ -6,7 +6,10 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "dev": "ts-node src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:dev": "node deploy-config.js development",
+    "deploy:prod": "node deploy-config.js production",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",

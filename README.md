@@ -54,9 +54,47 @@ Authorization: Bearer <your-access-token>
 - **Access Token**: 10 hours
 - **Refresh Token**: 30 days
 
+## 🌍 Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Server Configuration
+PORT=4000
+
+# Database Configuration
+MONGODB_URI=mongodb://localhost:27017/askme-app
+
+# JWT Configuration
+JWT_SECRET=your-super-secret-jwt-key-here
+JWT_REFRESH_SECRET=your-super-secret-refresh-key-here
+JWT_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=7d
+
+# Frontend URL (for CORS)
+FRONTEND_URL=https://your-app-name.netlify.app
+
+# Environment
+NODE_ENV=development
+```
+
+## 🚀 Deployment
+
+### For Netlify Frontend Deployment:
+1. Set `FRONTEND_URL` to your Netlify app URL
+2. Update CORS origins in `src/app.ts` if needed
+3. Deploy your backend to a service like Heroku, Railway, or Render
+
+### CORS Configuration:
+The app is configured to allow requests from:
+- Local development servers (`localhost:5173`, `localhost:3000`)
+- Netlify domains (`*.netlify.app`)
+- Custom frontend URL via `FRONTEND_URL` environment variable
+
 ## 🛠️ Built With
 - Node.js + Express + TypeScript
 - MongoDB Atlas
 - JWT Authentication
 - Swagger Documentation
 - bcrypt Password Hashing
+- CORS Support for Production
