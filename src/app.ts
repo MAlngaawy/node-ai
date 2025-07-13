@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db';
 import authRoutes from './routes/authRoutes';
+import questionRoutes from './routes/questionRoutes';
 import { swaggerUi, swaggerSpec } from './swagger/swagger';
 
 const app = express();
@@ -25,6 +26,9 @@ app.get('/api/swagger.json', (req, res) => {
 // Auth routes
 app.use('/api', authRoutes);
 
+// Question routes
+app.use('/api/questions', questionRoutes);
+
 // Root route
 app.get('/', (req, res) => {
   res.send('Welcome to our User API with JWT Authentication!');
@@ -45,5 +49,11 @@ connectDB().then(() => {
     console.log('- GET /api/users');
     console.log('- GET /api/users/:id');
     console.log('- DELETE /api/users/:id');
+    console.log('- GET /api/questions/user/:userId');
+    console.log('- GET /api/questions/asked/:userId');
+    console.log('- POST /api/questions/send');
+    console.log('- POST /api/questions/:questionId/answer');
+    console.log('- POST /api/questions/:questionId/ignore');
+    console.log('- GET /api/questions/feed');
   });
 });
