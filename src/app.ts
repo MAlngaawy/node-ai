@@ -1,11 +1,17 @@
 import 'dotenv/config';
 import express from 'express';
+import cors from 'cors';
 import { connectDB } from './config/db';
 import authRoutes from './routes/authRoutes';
 import { swaggerUi, swaggerSpec } from './swagger/swagger';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Vue app URL
+  credentials: true
+}));
 
 app.use(express.json());
 
